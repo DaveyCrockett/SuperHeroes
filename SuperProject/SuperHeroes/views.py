@@ -15,11 +15,11 @@ def index(request):
 
 
 def detail(request, supers_id):
-    one_super = SuperHeroes.objects.get(pk=1)
+    one_super = SuperHeroes.objects.get(pk=supers_id)
     context = {
         'one_super': one_super
     }
-    return render(request, 'SuperHeroes/index.html', context)
+    return render(request, 'SuperHeroes/details.html', context)
 
 
 def create(request):
