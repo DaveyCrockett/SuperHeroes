@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Page</title>
+</head>
+<body>
+      <form action="{% url 'SuperHeroes:edit_super' %}" method="post">
+        {% csrf_token %}
+        Name:<input type="text" name="name" id="name"><br>
+        Alter Ego:<input type="text" name="alter_ego" id="alter_ego">
+        Primary Power:<input type="text" name="primary_power" id="primary_power">
+        Secondary Power:<input type="text" name="secondary_power" id="secondary_power">
+        Catch Phrase:<input type="text" name="catch_phrase" id="catch_phrase">
+    <input type="submit" value="Edit Super Hero!">
+  </form>
+</body>
+</html>
