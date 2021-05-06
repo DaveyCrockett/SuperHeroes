@@ -53,11 +53,8 @@ def edit(request):
 
 
 def remove_super(request, supers_id):
-    one_super = SuperHeroes.objects.filter(pk=supers_id)
-    if request.method == 'DELETE':
-        one_super.remove(one_super)
-        return HttpResponseRedirect(reverse('SuperHeroes:index'))
-    else:
-        return render(request, 'SuperHeroes/index.html', {'pk': one_super})
+    SuperHeroes.objects.filter(pk=supers_id).delete()
+    return HttpResponseRedirect(reverse('SuperHeroes:index'))
+
 
 
