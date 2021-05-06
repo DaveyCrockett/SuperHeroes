@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import SuperHeroes
 from django.urls import reverse
+from django.views.generic import View
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def index(request):
     return render(request, 'SuperHeroes/index.html', context)
 
 
-def detail(request, supers_id):
+def details(request, supers_id):
     one_super = SuperHeroes.objects.get(pk=supers_id)
     context = {
         'one_super': one_super
@@ -49,3 +50,14 @@ def edit(request):
         return HttpResponseRedirect(reverse('SuperHeroes:index'))
     else:
         return render(request, 'SuperHeroes/edit.html')
+
+
+def remove_super(request, supers_id):
+    one_super = SuperHeroes.objects.filter(pk=supers_id)
+    if request.method == 'DELETE':
+        one_super.remove(one_super)
+        return HttpResponseRedirect(reverse('SuperHeroes:index'))
+    else:
+        return render(request, 'SuperHeroes/index.html', {'pk': one_super})
+
+

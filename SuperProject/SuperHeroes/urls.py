@@ -4,7 +4,8 @@ from django.urls import path
 app_name = 'SuperHeroes'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:supers_id>/', views.detail, name='detail'),
+    path('remove/<int:supers_id>/', views.remove_super, name='remove_super'),
+    path('<int:supers_id>/', views.details, name='details'),
     path('new/', views.create, name='create_new_super'),
     path('new/', views.edit, name='edit_super')
 ]

@@ -11,8 +11,14 @@
     <h1>Super Heroes Go Here!</h1>
     <ul>
         {% for super in all_supers %}
-        <li><h2>{{super.name}}</h2>
-        <a href="{% url 'SuperHeroes:detail' super.id %}">See more info</a> </li>
+        <li>
+            <h2>{{super.name}}</h2>
+            <a href="{% url 'SuperHeroes:details' super.id %}">See more info</a>
+            <form action="{% url 'SuperHeroes:remove_super' super.id %}" method="delete">
+
+                <button type="submit">Delete {{super.name}}</button>
+            </form>
+        </li>
         {% endfor %}
     </ul>
     <ul>
