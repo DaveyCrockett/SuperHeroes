@@ -19,11 +19,9 @@
                 <button type="submit">Delete {{super.name}}</button>
             </form>
         </li>
+
         {% endfor %}
-    </ul>
-    <ul>
         <li><a href="{% url 'SuperHeroes:create_new_super' %}">Create Super</a></li>
-        <li><a href="{% url 'SuperHeroes:edit_super' %}">Edit Super</a></li>
     </ul>
 </body>
 </html>

@@ -7,5 +7,4 @@ urlpatterns = [
     path('remove/<int:supers_id>/', views.remove_super, name='remove_super'),
     path('<int:supers_id>/', views.details, name='details'),
     path('new/', views.create, name='create_new_super'),
-    path('new/', views.edit, name='edit_super')
 ]
