@@ -5,23 +5,33 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <title>Super Heroes</title>
 </head>
 <body>
-    <h1>Super Heroes Go Here!</h1>
-    <ul>
+    <h1 style="text-align:center">Super Heroes Go Here!</h1>
+    {% load static %}
+    <img src="{% static 'SuperHeroes/Batman.jpg' %}" style="float:right;height:800px" alt="Batman">
+    <ul class="list-group list-group-flush">
         {% for super in all_supers %}
-        <li>
-            <h2>{{super.name}}</h2>
-            <a href="{% url 'SuperHeroes:details' super.id %}">See more info</a>
-            <form action="{% url 'SuperHeroes:remove_super' super.id %}" method="delete">
+        <li class="list-group-item">
+            <div class="d-grid gap-3">
+                <div class="p-2 bg-light border"><h2>{{super.name}}</h2></div>
+                <div class="p-2 bg-light border"><a href="{% url 'SuperHeroes:details' super.id %}" class="link-info">See more info</a></div>
+                <div class="p-2 bg-light border"><form action="{% url 'SuperHeroes:remove_super' super.id %}" method="delete">
 
-                <button type="submit">Delete {{super.name}}</button>
-            </form>
+                        <button type="submit" class="btn btn-outline-danger">Delete {{super.name}}</button>
+                </form></div>
+            </div>
         </li>
 
         {% endfor %}
-        <li><a href="{% url 'SuperHeroes:create_new_super' %}">Create Super</a></li>
     </ul>
+    <div class="position-absolute bottom-0 start-50 translate-middle-x">
+        <button type="button"><a href="{% url 'SuperHeroes:create_new_super' %}">Create Super</a></button>
+    </div>
 </body>
 </html>
